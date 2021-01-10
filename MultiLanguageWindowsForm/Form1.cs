@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using MultiLanguageWindowsForm.Language;
 
 namespace MultiLanguageWindowsForm
 {
@@ -15,6 +8,30 @@ namespace MultiLanguageWindowsForm
         public Form1()
         {
             InitializeComponent();
+        }
+
+
+        private void FieldLanguage(string language)
+        {
+            var cl = new ChoseLanguage();
+            cl.Language(language);
+
+            labelName.Text = cl.Lang.Name;
+            labelCountry.Text = cl.Lang.Coutry;
+        }
+
+        private void buttonLanguage_Click(object sender, System.EventArgs e)
+        {
+            if (comboBoxLanguage.Text!="")
+            {
+                
+            var language = comboBoxLanguage.Text;
+            FieldLanguage(language);
+            }
+            else
+            {
+                MessageBox.Show("Please Select Language & Try Again","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
         }
     }
 }
